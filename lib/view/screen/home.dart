@@ -1,5 +1,10 @@
-import 'package:easycut_business/controller/home/home_screen_controller.dart';
+import 'package:easycut_business/controller/home/home_controller.dart';
 import 'package:easycut_business/core/constant/color.dart';
+import 'package:easycut_business/core/constant/dimensions.dart';
+import 'package:easycut_business/core/constant/image_asset.dart';
+import 'package:easycut_business/core/shared/widgets/big_text.dart';
+import 'package:easycut_business/core/shared/widgets/small_text.dart';
+import 'package:easycut_business/data/data_source/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,47 +13,121 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeScreenControllerImp());
+    Get.lazyPut(() => HomeControllerImp());
     return Scaffold(
       backgroundColor: Colors.white,
-      // body: _pages[controller.currentVal],
-      body: GetBuilder<HomeScreenControllerImp>(
-        builder: (controller) {
-          return controller.pages[controller.currentPage];
-        },
-      ),
-      bottomNavigationBar: GetBuilder<HomeScreenControllerImp>(
-        builder: (controller) {
-          return BottomNavigationBar(
-            currentIndex: controller.currentPage,
-            type: BottomNavigationBarType.shifting,
-            showSelectedLabels: true,
-            showUnselectedLabels: false,
-            selectedItemColor: AppColor.primaryColor,
-            unselectedItemColor: Colors.grey[400],
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
+      body: GetBuilder<HomeControllerImp>(
+        builder: (controller) => SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: Dimensions.height350,
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Stack(
+                    children: [
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        left: 0,
+                        child: Container(
+                          height: constraints.maxHeight * 0.85,
+                          width: constraints.maxWidth,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(Dimensions.radius20),
+                              bottomRight: Radius.circular(Dimensions.radius20),
+                            ),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(Dimensions.radius20),
+                              bottomRight: Radius.circular(Dimensions.radius20),
+                            ),
+                            child: Image.asset(
+                              AppImageAsset.salonOne,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: Dimensions.width45,
+                        left: Dimensions.width45,
+                        child: Container(
+                          height: constraints.maxHeight * 0.25,
+                          width: constraints.maxWidth,
+                          decoration: BoxDecoration(
+                            color: AppColor.primaryColor,
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.radius20,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SmallText(
+                                text: "Hello ",
+                                size: Dimensions.font26,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: Dimensions.width5,
+                              ),
+                              BigText(
+                                text: controller.name!,
+                                size: Dimensions.font32,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.notifications_active),
-                label: 'Notification',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month),
-                label: 'Booking',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.width15,
+                ),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: Dimensions.width10,
+                    mainAxisSpacing: Dimensions.width10,
+                  ),
+                  itemCount: mainHome.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: mainHome[index].taped,
+                      child: Card(
+                        color: mainHome[index].color,
+                        elevation: Dimensions.width10,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(
+                              mainHome[index].icon,
+                              color: Colors.white,
+                              size: Dimensions.width45,
+                            ),
+                            BigText(
+                              text: mainHome[index].title,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
-            onTap: (index) {
-              controller.changePage(index);
-            },
-          );
-        },
+          ),
+        ),
       ),
     );
   }
