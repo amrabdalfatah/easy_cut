@@ -1,12 +1,24 @@
 import 'package:easycut_business/core/constant/dimensions.dart';
-import 'package:easycut_business/core/constant/image_asset.dart';
 import 'package:easycut_business/core/shared/widgets/big_text.dart';
-import 'package:easycut_business/view/widget/home/expandable_text_widget.dart';
+import 'package:easycut_business/core/shared/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class AboutSalon extends StatelessWidget {
-  final String description;
-  const AboutSalon({super.key, required this.description});
+  final String email;
+  final String country;
+  final String city;
+  final String address;
+  final String subscription;
+  final String reminder;
+  const AboutSalon({
+    super.key,
+    required this.email,
+    required this.country,
+    required this.city,
+    required this.address,
+    required this.subscription,
+    required this.reminder,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,45 +26,25 @@ class AboutSalon extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: Dimensions.height10),
-        SizedBox(
-          height: Dimensions.height120,
-          child: SingleChildScrollView(
-            child: ExpandableTextWidget(
-              text: description,
-            ),
-          ),
-        ),
+        const BigText(text: "Email"),
         SizedBox(height: Dimensions.height10),
-        const BigText(text: "Gallery"),
+        SmallText(text: email),
         SizedBox(height: Dimensions.height10),
-        SizedBox(
-          height: Dimensions.height100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: 6,
-            itemBuilder: (context, index) {
-              return Container(
-                height: Dimensions.height100,
-                width: Dimensions.width100,
-                margin: EdgeInsets.only(
-                  right: Dimensions.width10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    Dimensions.radius15,
-                  ),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      AppImageAsset.salonFour,
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
+        const BigText(text: "Country"),
+        SizedBox(height: Dimensions.height10),
+        SmallText(text: country),
+        SizedBox(height: Dimensions.height10),
+        const BigText(text: "Address"),
+        SizedBox(height: Dimensions.height10),
+        SmallText(text: "$city || $address"),
+        SizedBox(height: Dimensions.height10),
+        const BigText(text: "Subscription"),
+        SizedBox(height: Dimensions.height10),
+        SmallText(text: "$subscription Months"),
+        SizedBox(height: Dimensions.height10),
+        const BigText(text: "Reminder"),
+        SizedBox(height: Dimensions.height10),
+        SmallText(text: "$reminder Days"),
         SizedBox(height: Dimensions.height10),
       ],
     );

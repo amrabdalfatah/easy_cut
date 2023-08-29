@@ -1,5 +1,6 @@
 import 'package:easycut_business/core/constant/color.dart';
 import 'package:easycut_business/core/constant/image_asset.dart';
+import 'package:easycut_business/core/constant/routes.dart';
 import 'package:easycut_business/data/model/home_text.dart';
 import 'package:easycut_business/data/model/onboarding_model.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +64,8 @@ List<HomeText> mainHome = [
     title: "Profile",
     icon: Icons.settings,
     color: AppColor.primaryColor,
-    taped: () {},
+    taped: () {
+      Get.offNamed(AppRoute.salonProfile);
+    },
   ),
 ];

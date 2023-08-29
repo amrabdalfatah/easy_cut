@@ -5,6 +5,7 @@ import 'package:easycut_business/view/screen/auth/forget_password/reset_password
 import 'package:easycut_business/view/screen/auth/login.dart';
 import 'package:easycut_business/view/screen/auth/success.dart';
 import 'package:easycut_business/view/screen/home.dart';
+import 'package:easycut_business/view/screen/home/profile/profile.dart';
 import 'package:easycut_business/view/screen/language.dart';
 import 'package:easycut_business/view/screen/onboarding.dart';
 import 'package:get/get.dart';
@@ -43,5 +44,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoute.home,
     page: () => const Home(),
+  ),
+  GetPage(
+    name: AppRoute.salonProfile,
+    page: () => const ProfileView(),
   ),
 ];

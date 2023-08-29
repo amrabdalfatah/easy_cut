@@ -4,14 +4,15 @@ import 'package:easycut_business/data/model/salon_model.dart';
 import 'package:easycut_business/view/widget/home/show_salon_card.dart';
 import 'package:easycut_business/view/widget/main/about_salon.dart';
 import 'package:easycut_business/view/widget/main/show_comments_salon.dart';
-import 'package:easycut_business/view/widget/main/show_products_salon.dart';
 import 'package:flutter/material.dart';
 
 class StackSalonDetails extends StatelessWidget {
   final SalonModel salon;
+  final String? reminder;
   const StackSalonDetails({
     super.key,
     required this.salon,
+    required this.reminder,
   });
 
   @override
@@ -41,14 +42,13 @@ class StackSalonDetails extends StatelessWidget {
                   ),
                 ),
                 child: DefaultTabController(
-                  length: 3,
+                  length: 2,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ShowSalonCard(
                         text: "${salon.name}",
                         phone: "${salon.phone}",
-                        gender: "${salon.categoryId}",
                         rate: "${salon.rate}",
                       ),
                       SizedBox(height: Dimensions.height10),
@@ -61,9 +61,6 @@ class StackSalonDetails extends StatelessWidget {
                             text: "About",
                           ),
                           Tab(
-                            text: "Products",
-                          ),
-                          Tab(
                             text: "Comments",
                           ),
                         ],
@@ -71,8 +68,14 @@ class StackSalonDetails extends StatelessWidget {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            AboutSalon(description: salon.description!),
-                            ShowProductsSalon(),
+                            AboutSalon(
+                              address: salon.address!,
+                              city: salon.city!,
+                              country: salon.country!,
+                              email: salon.email!,
+                              subscription: salon.subscription!,
+                              reminder: reminder ?? "0",
+                            ),
                             ShowCommentsSalon(),
                           ],
                         ),

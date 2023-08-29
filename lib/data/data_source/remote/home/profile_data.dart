@@ -7,7 +7,7 @@ class ProfileData {
   ProfileData(this.crud);
 
   postData(String id) async {
-    var response = await crud.postData(AppLink.userInfo, {
+    var response = await crud.postData(AppLink.salonInfo, {
       "id": id,
     });
     return response.fold((l) => l, (r) => r);

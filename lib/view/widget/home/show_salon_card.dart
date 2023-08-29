@@ -8,13 +8,11 @@ import 'package:flutter/material.dart';
 class ShowSalonCard extends StatelessWidget {
   final String text;
   final String phone;
-  final String gender;
   final String rate;
   const ShowSalonCard({
     super.key,
     required this.text,
     required this.phone,
-    required this.gender,
     required this.rate,
   });
 
@@ -50,13 +48,7 @@ class ShowSalonCard extends StatelessWidget {
         ),
         SizedBox(height: Dimensions.height10),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconAndTextWidget(
-              icon: Icons.circle_sharp,
-              text: gender == "1" ? "Men" : "Women",
-              iconColor: AppColor.grey,
-            ),
             IconAndTextWidget(
               icon: Icons.phone,
               text: phone,

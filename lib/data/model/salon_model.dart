@@ -2,52 +2,44 @@ class SalonModel {
   String? id;
   String? name;
   String? email;
-  String? password;
   String? phone;
   String? rate;
-  String? description;
   String? chairs;
-  String? categoryId;
   String? image;
-  String? verifycode;
   String? approve;
+  String? subscription;
   String? country;
   String? city;
   String? address;
   String? createdAt;
   String? updatedAt;
 
-  SalonModel(
-      {this.id,
-      this.name,
-      this.email,
-      this.password,
-      this.phone,
-      this.rate,
-      this.description,
-      this.chairs,
-      this.categoryId,
-      this.image,
-      this.verifycode,
-      this.approve,
-      this.country,
-      this.city,
-      this.address,
-      this.createdAt,
-      this.updatedAt});
+  SalonModel({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.rate,
+    this.subscription,
+    this.chairs,
+    this.image,
+    this.approve,
+    this.country,
+    this.city,
+    this.address,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   SalonModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
-    password = json['password'];
     phone = json['phone'];
     rate = json['rate'];
-    description = json['description'];
+    subscription = json['subscription'];
     chairs = json['chairs'];
-    categoryId = json['category_id'];
     image = json['image'];
-    verifycode = json['verifycode'];
     approve = json['approve'];
     country = json['country'];
     city = json['city'];
@@ -61,14 +53,11 @@ class SalonModel {
     data['id'] = this.id;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['password'] = this.password;
     data['phone'] = this.phone;
     data['rate'] = this.rate;
-    data['description'] = this.description;
+    data['subscription'] = this.subscription;
     data['chairs'] = this.chairs;
-    data['category_id'] = this.categoryId;
     data['image'] = this.image;
-    data['verifycode'] = this.verifycode;
     data['approve'] = this.approve;
     data['country'] = this.country;
     data['city'] = this.city;

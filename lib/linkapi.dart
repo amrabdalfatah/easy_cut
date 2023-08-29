@@ -6,6 +6,5 @@ class AppLink {
   static const String resetPassword = "$server/salons/auth/resetpassword.php";
 // ================================= Home ====================
   static const String home = "$server/users/home/home.php";
-  static const String userInfo = "$server/users/auth/view.php";
-  static const String salonDetail = "$server/users/main/salondetail.php";
+  static const String salonInfo = "$server/salons/profile/show.php";
 }

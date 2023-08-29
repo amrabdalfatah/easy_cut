@@ -1,23 +1,21 @@
-import 'package:easycut_business/controller/main/salon_detail_controller.dart';
+import 'package:easycut_business/controller/home/profile_controller.dart';
 import 'package:easycut_business/core/class/handling_data_view.dart';
-import 'package:easycut_business/core/constant/color.dart';
 import 'package:easycut_business/core/constant/dimensions.dart';
 import 'package:easycut_business/core/constant/routes.dart';
-import 'package:easycut_business/core/shared/widgets/big_text.dart';
 import 'package:easycut_business/view/widget/home/app_icon.dart';
 import 'package:easycut_business/view/widget/main/stack_image_detail.dart';
 import 'package:easycut_business/view/widget/main/stack_salon_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SalonDetails extends StatelessWidget {
-  const SalonDetails({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => SalonDetailControllerImp());
+    Get.lazyPut(() => ProfileControllerImp());
     return Scaffold(
-      body: GetBuilder<SalonDetailControllerImp>(
+      body: GetBuilder<ProfileControllerImp>(
         builder: (controller) {
           return HandlingDataView(
             statusRequest: controller.statusRequest,
@@ -36,32 +34,23 @@ class SalonDetails extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.back();
+                                Get.offNamed(AppRoute.home);
                               },
                               child: const AppIcon(icon: Icons.arrow_back_ios),
                             ),
-                            AppIcon(icon: Icons.favorite_border),
+                            GestureDetector(
+                              onTap: () {},
+                              child: const AppIcon(icon: Icons.camera_alt),
+                            ),
                           ],
                         ),
                       ),
-                      StackSalonDetails(salon: controller.salon),
+                      StackSalonDetails(
+                        salon: controller.salon,
+                        // reminder: controller.calculateReminder(),
+                        reminder: controller.reminder,
+                      ),
                     ],
-                  ),
-                ),
-                Container(
-                  height: Dimensions.height60,
-                  width: double.infinity,
-                  color: AppColor.primaryColor,
-                  child: MaterialButton(
-                    onPressed: () {
-                      Get.toNamed(AppRoute.bookSalonView, arguments: {
-                        "id": controller.salon.id,
-                      });
-                    },
-                    child: const BigText(
-                      text: "Booking Now",
-                      color: Colors.white,
-                    ),
                   ),
                 ),
               ],
