@@ -32,38 +32,64 @@ List<OnBoardingModel> onBoardingList = [
 List<HomeText> mainHome = [
   HomeText(
     title: "Booking Today",
-    icon: Icons.calendar_month,
+    icon: Icons.calendar_today,
     color: Colors.red,
-    taped: () {},
+    taped: () {
+      Get.offNamed(AppRoute.bookingToday);
+    },
   ),
   HomeText(
     title: "Booking Pending",
     icon: Icons.edit_calendar,
     color: AppColor.primaryColor,
-    taped: () {},
+    taped: () {
+      Get.offNamed(AppRoute.bookingPending);
+    },
+  ),
+  HomeText(
+    title: "All Bookings",
+    icon: Icons.calendar_month,
+    color: AppColor.primaryColor,
+    taped: () {
+      Get.offNamed(AppRoute.allBooking);
+    },
+  ),
+  HomeText(
+    title: "Gallery",
+    icon: Icons.image,
+    color: Colors.red,
+    taped: () {
+      Get.offNamed(AppRoute.gallery);
+    },
   ),
   HomeText(
     title: "Customers",
     icon: Icons.person,
-    color: AppColor.primaryColor,
-    taped: () {},
+    color: Colors.red,
+    taped: () {
+      Get.offNamed(AppRoute.customers);
+    },
   ),
   HomeText(
     title: "Services",
     icon: Icons.design_services,
-    color: Colors.red,
-    taped: () {},
+    color: AppColor.primaryColor,
+    taped: () {
+      Get.offNamed(AppRoute.services);
+    },
   ),
   HomeText(
     title: "Products",
     icon: Icons.shopping_basket,
-    color: Colors.red,
-    taped: () {},
+    color: AppColor.primaryColor,
+    taped: () {
+      Get.offNamed(AppRoute.products);
+    },
   ),
   HomeText(
     title: "Profile",
     icon: Icons.settings,
-    color: AppColor.primaryColor,
+    color: Colors.red,
     taped: () {
       Get.offNamed(AppRoute.salonProfile);
     },

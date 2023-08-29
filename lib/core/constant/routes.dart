@@ -8,5 +8,12 @@ class AppRoute {
   static const String success = "/success"; // done
   // ============ Home Routes         ==================
   static const String home = "/home";
+  static const String bookingToday = "/bookingtoday";
+  static const String bookingPending = "/bookingpending";
+  static const String allBooking = "/allbooking";
+  static const String gallery = "/gallery";
+  static const String customers = "/customers";
+  static const String services = "/services";
+  static const String products = "/products";
   static const String salonProfile = "/salonprofile";
 }
