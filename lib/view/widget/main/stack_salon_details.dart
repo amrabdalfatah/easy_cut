@@ -73,6 +73,7 @@ class StackSalonDetails extends StatelessWidget {
                               city: salon.city!,
                               country: salon.country!,
                               email: salon.email!,
+                              chairs: salon.chairs!,
                               subscription: salon.subscription!,
                               reminder: reminder ?? "0",
                             ),

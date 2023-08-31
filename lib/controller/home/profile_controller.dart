@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 abstract class ProfileController extends GetxController {
   getSalonData();
   calculateReminder();
+  updateSalon();
 }
 
 class ProfileControllerImp extends ProfileController {
@@ -59,4 +60,7 @@ class ProfileControllerImp extends ProfileController {
     int totalDays = int.parse(salon.subscription!) * 30;
     update();
   }
+
+  @override
+  updateSalon() {}
 }

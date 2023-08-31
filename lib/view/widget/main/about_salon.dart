@@ -8,6 +8,7 @@ class AboutSalon extends StatelessWidget {
   final String country;
   final String city;
   final String address;
+  final String chairs;
   final String subscription;
   final String reminder;
   const AboutSalon({
@@ -16,6 +17,7 @@ class AboutSalon extends StatelessWidget {
     required this.country,
     required this.city,
     required this.address,
+    required this.chairs,
     required this.subscription,
     required this.reminder,
   });
@@ -30,13 +32,13 @@ class AboutSalon extends StatelessWidget {
         SizedBox(height: Dimensions.height10),
         SmallText(text: email),
         SizedBox(height: Dimensions.height10),
-        const BigText(text: "Country"),
-        SizedBox(height: Dimensions.height10),
-        SmallText(text: country),
-        SizedBox(height: Dimensions.height10),
         const BigText(text: "Address"),
         SizedBox(height: Dimensions.height10),
-        SmallText(text: "$city || $address"),
+        SmallText(text: "$country || $city || $address"),
+        SizedBox(height: Dimensions.height10),
+        const BigText(text: "Chairs"),
+        SizedBox(height: Dimensions.height10),
+        SmallText(text: chairs),
         SizedBox(height: Dimensions.height10),
         const BigText(text: "Subscription"),
         SizedBox(height: Dimensions.height10),
