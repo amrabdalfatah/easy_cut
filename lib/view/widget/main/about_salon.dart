@@ -10,7 +10,7 @@ class AboutSalon extends StatelessWidget {
   final String address;
   final String chairs;
   final String subscription;
-  final String reminder;
+  final String created;
   const AboutSalon({
     super.key,
     required this.email,
@@ -19,7 +19,7 @@ class AboutSalon extends StatelessWidget {
     required this.address,
     required this.chairs,
     required this.subscription,
-    required this.reminder,
+    required this.created,
   });
 
   @override
@@ -44,9 +44,9 @@ class AboutSalon extends StatelessWidget {
         SizedBox(height: Dimensions.height10),
         SmallText(text: "$subscription Months"),
         SizedBox(height: Dimensions.height10),
-        const BigText(text: "Reminder"),
+        const BigText(text: "Started At"),
         SizedBox(height: Dimensions.height10),
-        SmallText(text: "$reminder Days"),
+        SmallText(text: "$created"),
         SizedBox(height: Dimensions.height10),
       ],
     );

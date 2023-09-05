@@ -38,17 +38,17 @@ class ProfileView extends StatelessWidget {
                               },
                               child: const AppIcon(icon: Icons.arrow_back_ios),
                             ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: const AppIcon(icon: Icons.camera_alt),
-                            ),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //
+                            //   },
+                            //   child: const AppIcon(icon: Icons.edit),
+                            // ),
                           ],
                         ),
                       ),
                       StackSalonDetails(
                         salon: controller.salon,
-                        // reminder: controller.calculateReminder(),
-                        reminder: controller.reminder,
                       ),
                     ],
                   ),

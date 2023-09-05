@@ -8,11 +8,9 @@ import 'package:flutter/material.dart';
 
 class StackSalonDetails extends StatelessWidget {
   final SalonModel salon;
-  final String? reminder;
   const StackSalonDetails({
     super.key,
     required this.salon,
-    required this.reminder,
   });
 
   @override
@@ -75,7 +73,7 @@ class StackSalonDetails extends StatelessWidget {
                               email: salon.email!,
                               chairs: salon.chairs!,
                               subscription: salon.subscription!,
-                              reminder: reminder ?? "0",
+                              created: salon.createdAt!.substring(0, 10),
                             ),
                             ShowCommentsSalon(),
                           ],
