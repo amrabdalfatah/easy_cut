@@ -5,11 +5,12 @@ import 'package:easycut_business/view/screen/auth/forget_password/reset_password
 import 'package:easycut_business/view/screen/auth/login.dart';
 import 'package:easycut_business/view/screen/auth/success.dart';
 import 'package:easycut_business/view/screen/home.dart';
+import 'package:easycut_business/view/screen/home/appointments/add_appointment.dart';
+import 'package:easycut_business/view/screen/home/appointments/appointment.dart';
 import 'package:easycut_business/view/screen/home/booking/all_bookings.dart';
 import 'package:easycut_business/view/screen/home/booking/booking_pending.dart';
 import 'package:easycut_business/view/screen/home/booking/booking_today.dart';
 import 'package:easycut_business/view/screen/home/customers/customers.dart';
-import 'package:easycut_business/view/screen/home/gallery/gallery.dart';
 import 'package:easycut_business/view/screen/home/products/products.dart';
 import 'package:easycut_business/view/screen/home/profile/profile.dart';
 import 'package:easycut_business/view/screen/home/services/services.dart';
@@ -65,8 +66,12 @@ List<GetPage<dynamic>>? routes = [
     page: () => const AllBookings(),
   ),
   GetPage(
-    name: AppRoute.gallery,
-    page: () => const Gallery(),
+    name: AppRoute.appointment,
+    page: () => const Appointments(),
+  ),
+  GetPage(
+    name: AppRoute.addAppointment,
+    page: () => const AddAppointment(),
   ),
   GetPage(
     name: AppRoute.customers,

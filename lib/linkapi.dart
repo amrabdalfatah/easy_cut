@@ -8,4 +8,6 @@ class AppLink {
   static const String home = "$server/users/home/home.php";
   static const String salonInfo = "$server/salons/profile/show.php";
   static const String commentView = "$server/comments/view.php";
+  static const String appointmentView = "$server/appointments/show.php";
+  static const String appointmentAdd = "$server/appointments/add.php";
 }

@@ -55,11 +55,11 @@ List<HomeText> mainHome = [
     },
   ),
   HomeText(
-    title: "Gallery",
-    icon: Icons.image,
+    title: "Appointments",
+    icon: Icons.calendar_view_month,
     color: Colors.red,
     taped: () {
-      Get.offNamed(AppRoute.gallery);
+      Get.offNamed(AppRoute.appointment);
     },
   ),
   HomeText(
