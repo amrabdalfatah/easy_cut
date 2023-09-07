@@ -1,5 +1,9 @@
 class AppLink {
   static const String server = "https://easycuteg.com";
+  static const String imageServices = "https://easycuteg.com/upload/services/";
+  static const String imageSalons = "https://easycuteg.com/upload/salons/";
+  static const String imageUsers = "https://easycuteg.com/upload/users/";
+  static const String imageProducts = "https://easycuteg.com/upload/products/";
 // ================================= Auth ==========================
   static const String login = "$server/salons/auth/login.php";
   static const String checkEmail = "$server/salons/auth/checkemail.php";
@@ -10,4 +14,6 @@ class AppLink {
   static const String commentView = "$server/comments/view.php";
   static const String appointmentView = "$server/appointments/show.php";
   static const String appointmentAdd = "$server/appointments/add.php";
+  static const String servicesView = "$server/salons/services/view.php";
+  static const String servicesAdd = "$server/salons/services/add.php";
 }

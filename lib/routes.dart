@@ -13,6 +13,7 @@ import 'package:easycut_business/view/screen/home/booking/booking_today.dart';
 import 'package:easycut_business/view/screen/home/customers/customers.dart';
 import 'package:easycut_business/view/screen/home/products/products.dart';
 import 'package:easycut_business/view/screen/home/profile/profile.dart';
+import 'package:easycut_business/view/screen/home/services/add_services.dart';
 import 'package:easycut_business/view/screen/home/services/services.dart';
 import 'package:easycut_business/view/screen/language.dart';
 import 'package:easycut_business/view/screen/onboarding.dart';
@@ -80,6 +81,10 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoute.services,
     page: () => const Services(),
+  ),
+  GetPage(
+    name: AppRoute.addServices,
+    page: () => const AddServices(),
   ),
   GetPage(
     name: AppRoute.products,

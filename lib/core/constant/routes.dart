@@ -15,6 +15,7 @@ class AppRoute {
   static const String addAppointment = "/add-appointment";
   static const String customers = "/customers";
   static const String services = "/services";
+  static const String addServices = "/add-services";
   static const String products = "/products";
   static const String salonProfile = "/salonprofile";
 }
