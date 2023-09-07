@@ -1,104 +1,37 @@
-class Product {
-  int? _totalSize;
-  int? _typeId;
-  int? _offset;
-  late List<ProductModel> _products;
-  List<ProductModel> get products => _products;
-
-  Product({
-    required int totalSize,
-    required int typeId,
-    required int offset,
-    required products,
-  }) {
-    _totalSize = totalSize;
-    _typeId = typeId;
-    _offset = offset;
-    _products = products;
-  }
-
-  Product.fromJson(Map<String, dynamic> json) {
-    _totalSize = json['total_size'];
-    _typeId = json['type_id'];
-    _offset = json['offset'];
-    if (json['products'] != null) {
-      _products = <ProductModel>[];
-      json['products'].forEach((v) {
-        _products.add(ProductModel.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['total_size'] = _totalSize;
-    data['type_id'] = _typeId;
-    data['offset'] = _offset;
-    if (_products != null) {
-      data['products'] = _products.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
 class ProductModel {
-  int? id;
+  String? id;
+  String? salonId;
   String? name;
-  String? description;
-  int? price;
-  int? stars;
-  String? img;
-  String? location;
-  String? createdAt;
-  String? updatedAt;
-  int? typeId;
-  List<String>? images;
+  String? number;
+  String? image;
+  String? price;
 
   ProductModel({
     this.id,
+    this.salonId,
     this.name,
-    this.description,
+    this.number,
+    this.image,
     this.price,
-    this.stars,
-    this.img,
-    this.location,
-    this.createdAt,
-    this.updatedAt,
-    this.typeId,
-    this.images,
   });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    salonId = json['salon_id'];
     name = json['name'];
-    description = json['description'];
+    number = json['number'];
+    image = json['image'];
     price = json['price'];
-    stars = json['stars'];
-    img = json['img'];
-    location = json['location'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    typeId = json['type_id'];
-    if (json['images'] != null) {
-      images = <String>[];
-      json['images'].forEach((v) {
-        images!.add(v);
-      });
-    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['id'] = id;
-    data['name'] = name;
-    data['description'] = description;
-    data['price'] = price;
-    data['stars'] = stars;
-    data['img'] = img;
-    data['location'] = location;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['type_id'] = typeId;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['salon_id'] = this.salonId;
+    data['name'] = this.name;
+    data['number'] = this.number;
+    data['image'] = this.image;
+    data['price'] = this.price;
     return data;
   }
 }

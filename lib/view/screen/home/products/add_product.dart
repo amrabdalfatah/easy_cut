@@ -1,4 +1,4 @@
-import 'package:easycut_business/controller/home/services_controller.dart';
+import 'package:easycut_business/controller/home/products_controller.dart';
 import 'package:easycut_business/core/class/status_request.dart';
 import 'package:easycut_business/core/constant/dimensions.dart';
 import 'package:easycut_business/core/constant/routes.dart';
@@ -11,23 +11,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddServices extends StatelessWidget {
-  const AddServices({super.key});
+class AddProduct extends StatelessWidget {
+  const AddProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => ServicesControllerImp());
+    Get.lazyPut(() => ProductsControllerImp());
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const BigText(
-          text: "Add Services",
+          text: "Add Product",
         ),
         leading: IconButton(
           onPressed: () {
-            Get.offNamed(AppRoute.services);
+            Get.offNamed(AppRoute.products);
           },
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -35,7 +35,7 @@ class AddServices extends StatelessWidget {
           ),
         ),
       ),
-      body: GetBuilder<ServicesControllerImp>(
+      body: GetBuilder<ProductsControllerImp>(
         builder: (controller) {
           return Padding(
             padding: EdgeInsets.all(Dimensions.height15),
@@ -46,29 +46,29 @@ class AddServices extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomTextFormAuth(
-                      hintText: "Service Name (Hair Cut)",
+                      hintText: "Product Name",
                       type: TextInputType.text,
-                      prefixIcon: Icons.design_services,
-                      myController: controller.serviceName,
+                      prefixIcon: Icons.numbers,
+                      myController: controller.productName,
                       valid: (val) {
                         return validInput(val!, 6, 200, "any");
                       },
                     ),
                     CustomTextFormAuth(
-                      hintText: "Time (15)",
+                      hintText: "Number",
                       type: TextInputType.number,
                       prefixIcon: Icons.timer,
-                      myController: controller.serviceTime,
+                      myController: controller.productNumber,
                       valid: (val) {
-                        return validInput(val!, 1, 3, "any");
+                        return validInput(val!, 0, 3, "any");
                       },
                     ),
                     CustomTextFormAuth(
-                      hintText: "Price (50)",
+                      hintText: "Price",
                       type:
                           const TextInputType.numberWithOptions(decimal: true),
                       prefixIcon: Icons.price_change,
-                      myController: controller.servicePrice,
+                      myController: controller.productPrice,
                       valid: (val) {
                         return validInput(val!, 1, 4, "any");
                       },
@@ -91,9 +91,9 @@ class AddServices extends StatelessWidget {
                           ? CupertinoActivityIndicator()
                           : CustomButtonAuth(
                               onPressed: () {
-                                controller.addServicesData();
+                                controller.addProductsData();
                               },
-                              text: "Add Service",
+                              text: "Add Product",
                             ),
                     ),
                   ],

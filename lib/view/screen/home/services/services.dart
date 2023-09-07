@@ -1,7 +1,6 @@
 import 'package:easycut_business/controller/home/services_controller.dart';
 import 'package:easycut_business/core/class/handling_data_view.dart';
 import 'package:easycut_business/core/constant/dimensions.dart';
-import 'package:easycut_business/core/constant/image_asset.dart';
 import 'package:easycut_business/core/constant/routes.dart';
 import 'package:easycut_business/core/shared/widgets/big_text.dart';
 import 'package:easycut_business/core/shared/widgets/small_text.dart';
