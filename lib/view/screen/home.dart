@@ -5,6 +5,7 @@ import 'package:easycut_business/core/constant/image_asset.dart';
 import 'package:easycut_business/core/shared/widgets/big_text.dart';
 import 'package:easycut_business/core/shared/widgets/small_text.dart';
 import 'package:easycut_business/data/data_source/static/static.dart';
+import 'package:easycut_business/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,10 +44,15 @@ class Home extends StatelessWidget {
                               bottomLeft: Radius.circular(Dimensions.radius20),
                               bottomRight: Radius.circular(Dimensions.radius20),
                             ),
-                            child: Image.asset(
-                              AppImageAsset.salonOne,
-                              fit: BoxFit.cover,
-                            ),
+                            child: controller.image!.isEmpty
+                                ? Image.asset(
+                                    AppImageAsset.salonOne,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    "${AppLink.imageSalons}${controller.image!}",
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
                       ),
@@ -80,6 +86,29 @@ class Home extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: Dimensions.height50,
+                        right: Dimensions.width15,
+                        child: Container(
+                          height: constraints.maxHeight * 0.15,
+                          width: constraints.maxWidth * 0.12,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.radius20,
+                            ),
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              controller.logout();
+                            },
+                            icon: const Icon(
+                              Icons.logout,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                       ),

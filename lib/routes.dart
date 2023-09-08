@@ -13,6 +13,7 @@ import 'package:easycut_business/view/screen/home/booking/booking_today.dart';
 import 'package:easycut_business/view/screen/home/customers/customers.dart';
 import 'package:easycut_business/view/screen/home/products/add_product.dart';
 import 'package:easycut_business/view/screen/home/products/products.dart';
+import 'package:easycut_business/view/screen/home/profile/edit_profile.dart';
 import 'package:easycut_business/view/screen/home/profile/profile.dart';
 import 'package:easycut_business/view/screen/home/services/add_services.dart';
 import 'package:easycut_business/view/screen/home/services/services.dart';
@@ -98,5 +99,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoute.salonProfile,
     page: () => const ProfileView(),
+  ),
+  GetPage(
+    name: AppRoute.salonProfileEdit,
+    page: () => const EditProfile(),
   ),
 ];

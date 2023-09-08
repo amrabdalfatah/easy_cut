@@ -1,5 +1,6 @@
 import 'package:easycut_business/core/constant/dimensions.dart';
 import 'package:easycut_business/core/constant/image_asset.dart';
+import 'package:easycut_business/linkapi.dart';
 import 'package:flutter/material.dart';
 
 class StackImageDetail extends StatelessWidget {
@@ -20,7 +21,7 @@ class StackImageDetail extends StatelessWidget {
                 fit: BoxFit.fill,
               )
             : Image.network(
-                salonImage,
+                "${AppLink.imageSalons}$salonImage",
                 fit: BoxFit.fill,
               ),
       ),

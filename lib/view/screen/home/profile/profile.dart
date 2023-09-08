@@ -38,12 +38,12 @@ class ProfileView extends StatelessWidget {
                               },
                               child: const AppIcon(icon: Icons.arrow_back_ios),
                             ),
-                            // GestureDetector(
-                            //   onTap: () {
-                            //
-                            //   },
-                            //   child: const AppIcon(icon: Icons.edit),
-                            // ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.offNamed(AppRoute.salonProfileEdit);
+                              },
+                              child: const AppIcon(icon: Icons.edit),
+                            ),
                           ],
                         ),
                       ),

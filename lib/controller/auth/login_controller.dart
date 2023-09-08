@@ -50,6 +50,8 @@ class LoginControllerImp extends LoginController {
           myServices.sharedPreferences.setString('id', response['data']['id']);
           myServices.sharedPreferences
               .setString('name', response['data']['name']);
+          myServices.sharedPreferences
+              .setString('image', response['data']['image']);
 
           myServices.sharedPreferences.setString('step', '2');
         } else {
