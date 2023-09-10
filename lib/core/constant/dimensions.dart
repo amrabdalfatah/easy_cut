@@ -23,6 +23,7 @@ class Dimensions {
   static double height150 = screenHeight / 5.62;
   static double height200 = screenHeight / 4.22;
   static double height250 = screenHeight / 3.37;
+  static double height300 = screenHeight / 2.8;
   static double height350 = screenHeight / 2.41;
   static double heightAppBar = screenHeight / 6.80;
   static double heightImage = screenHeight / 2.2;

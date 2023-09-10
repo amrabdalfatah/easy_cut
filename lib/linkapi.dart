@@ -19,4 +19,5 @@ class AppLink {
   static const String servicesAdd = "$server/salons/services/add.php";
   static const String productsView = "$server/salons/products/view.php";
   static const String productsAdd = "$server/salons/products/add.php";
+  static const String customersView = "$server/salons/customers/view.php";
 }

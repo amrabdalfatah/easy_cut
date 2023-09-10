@@ -3,7 +3,6 @@ import 'package:easycut_business/core/constant/dimensions.dart';
 import 'package:easycut_business/data/model/salon_model.dart';
 import 'package:easycut_business/view/widget/home/show_salon_card.dart';
 import 'package:easycut_business/view/widget/main/about_salon.dart';
-import 'package:easycut_business/view/widget/main/show_comments_salon.dart';
 import 'package:flutter/material.dart';
 
 class StackSalonDetails extends StatelessWidget {
@@ -40,7 +39,7 @@ class StackSalonDetails extends StatelessWidget {
                   ),
                 ),
                 child: DefaultTabController(
-                  length: 2,
+                  length: 1,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -58,9 +57,9 @@ class StackSalonDetails extends StatelessWidget {
                           Tab(
                             text: "About",
                           ),
-                          Tab(
-                            text: "Comments",
-                          ),
+                          // Tab(
+                          //   text: "Comments",
+                          // ),
                         ],
                       ),
                       Expanded(
@@ -75,7 +74,7 @@ class StackSalonDetails extends StatelessWidget {
                               subscription: salon.subscription!,
                               created: salon.createdAt!.substring(0, 10),
                             ),
-                            ShowCommentsSalon(),
+                            //ShowCommentsSalon(),
                           ],
                         ),
                       ),
