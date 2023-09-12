@@ -1,8 +1,10 @@
+import 'package:easycut_business/controller/home/booking_controller.dart';
+import 'package:easycut_business/core/class/handling_data_view.dart';
 import 'package:easycut_business/core/constant/dimensions.dart';
-import 'package:easycut_business/core/constant/image_asset.dart';
 import 'package:easycut_business/core/constant/routes.dart';
 import 'package:easycut_business/core/shared/widgets/big_text.dart';
 import 'package:easycut_business/core/shared/widgets/small_text.dart';
+import 'package:easycut_business/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +13,7 @@ class AllBookings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => BookingControllerImp());
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -29,75 +32,124 @@ class AllBookings extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: 8,
-        itemBuilder: (context, index) {
-          return Container(
-            height: Dimensions.height100,
-            width: double.infinity,
-            margin: EdgeInsets.all(Dimensions.height10),
-            child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(Dimensions.height10),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: Dimensions.height45,
-                      child: ClipRRect(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        borderRadius: BorderRadius.circular(
-                          Dimensions.height45,
-                        ),
-                        child: Image.asset(
-                          AppImageAsset.profile,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: Dimensions.width10,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+      body: GetBuilder<BookingControllerImp>(
+        builder: (controller) {
+          return HandlingDataView(
+            statusRequest: controller.statusRequest,
+            widget: ListView.builder(
+              itemCount: controller.allBookings.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: Dimensions.height100,
+                  width: double.infinity,
+                  margin: EdgeInsets.all(Dimensions.height10),
+                  child: Card(
+                    child: Padding(
+                      padding: EdgeInsets.all(Dimensions.height10),
+                      child: Row(
                         children: [
-                          BigText(
-                            text: "04:25 PM",
-                            size: Dimensions.font20,
+                          CircleAvatar(
+                            radius: Dimensions.height45,
+                            child: ClipRRect(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              borderRadius: BorderRadius.circular(
+                                Dimensions.height45,
+                              ),
+                              child: Image.network(
+                                "${AppLink.imageUsers}${controller.allBookings[index].userImage}",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                          BigText(
-                            text: "04:25",
-                            size: Dimensions.font20,
-                            color: Colors.red,
+                          SizedBox(
+                            width: Dimensions.width10,
                           ),
-                          SmallText(
-                            text: "Amr Abdalfatah",
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BigText(
+                                  text: controller.allBookings[index].day!,
+                                  size: Dimensions.font16,
+                                ),
+                                BigText(
+                                  text:
+                                      controller.allBookings[index].startTime!,
+                                  size: Dimensions.font16,
+                                  color: Colors.red,
+                                ),
+                                BigText(
+                                  text: controller.allBookings[index].userName!,
+                                  size: Dimensions.font20,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  SmallText(text: "Price :"),
+                                  SizedBox(width: Dimensions.width5),
+                                  BigText(
+                                    text:
+                                        "${controller.allBookings[index].total!} \$",
+                                    size: Dimensions.font16,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    height: Dimensions.height15,
+                                    width: Dimensions.height15,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: controller
+                                                  .allBookings[index].approve ==
+                                              "0"
+                                          ? Colors.orange
+                                          : controller.allBookings[index]
+                                                      .approve ==
+                                                  "1"
+                                              ? Colors.green
+                                              : Colors.red,
+                                    ),
+                                  ),
+                                  SizedBox(width: Dimensions.width5),
+                                  BigText(
+                                    text:
+                                        controller.allBookings[index].approve ==
+                                                "0"
+                                            ? "waiting"
+                                            : controller.allBookings[index]
+                                                        .approve ==
+                                                    "1"
+                                                ? "accepted"
+                                                : "refused",
+                                    size: Dimensions.font16,
+                                    color:
+                                        controller.allBookings[index].approve ==
+                                                "0"
+                                            ? Colors.orange
+                                            : controller.allBookings[index]
+                                                        .approve ==
+                                                    "1"
+                                                ? Colors.green
+                                                : Colors.red,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.highlight_remove_outlined,
-                            color: Colors.red,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.check_circle_outline,
-                            color: Colors.green,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           );
         },

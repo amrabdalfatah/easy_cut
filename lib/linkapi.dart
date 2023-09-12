@@ -20,4 +20,7 @@ class AppLink {
   static const String productsView = "$server/salons/products/view.php";
   static const String productsAdd = "$server/salons/products/add.php";
   static const String customersView = "$server/salons/customers/view.php";
+  static const String bookingsView = "$server/salons/booking/view.php";
+  static const String bookingsShow = "$server/salons/booking/show.php";
+  static const String bookingsEdit = "$server/salons/booking/edit.php";
 }
