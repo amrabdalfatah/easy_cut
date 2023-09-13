@@ -1,11 +1,8 @@
 import 'package:easycut_business/core/class/status_request.dart';
-import 'package:easycut_business/core/constant/routes.dart';
 import 'package:easycut_business/core/functions/handling_data_controller.dart';
 import 'package:easycut_business/core/services/services.dart';
 import 'package:easycut_business/data/data_source/remote/home/bookings_data.dart';
-import 'package:easycut_business/data/model/appointment_model.dart';
 import 'package:easycut_business/data/model/booking_model.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class BookingController extends GetxController {
@@ -19,6 +16,8 @@ class BookingControllerImp extends BookingController {
   StatusRequest statusRequest = StatusRequest.success;
   BookingsData bookingsData = BookingsData(Get.find());
   List<BookingModel> allBookings = [];
+  List<BookingModel> bookingPending = [];
+  List<BookingModel> bookingToday = [];
   // AppointmentModel appointment = AppointmentModel();
 
   @override
@@ -36,11 +35,31 @@ class BookingControllerImp extends BookingController {
           var item = element as Map<String, dynamic>;
           allBookings.add(BookingModel.fromJson(item));
         });
+        getBookingToday(allBookings);
+        getBookingPending(allBookings);
       } else {
         statusRequest = StatusRequest.none;
       }
     }
     update();
+  }
+
+  getBookingToday(List<BookingModel> allBookings) {
+    var dateTime = DateTime.now().toString().substring(0, 10);
+    allBookings.forEach((element) {
+      if (element.day == dateTime && element.approve == "1") {
+        bookingToday.add(element);
+      }
+    });
+  }
+
+  getBookingPending(List<BookingModel> allBookings) {
+    var dateTime = DateTime.now().toString().substring(0, 10);
+    allBookings.forEach((element) {
+      if (element.approve == "0") {
+        bookingPending.add(element);
+      }
+    });
   }
 
   // @override
