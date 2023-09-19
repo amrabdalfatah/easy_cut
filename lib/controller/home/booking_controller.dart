@@ -1,4 +1,5 @@
 import 'package:easycut_business/core/class/status_request.dart';
+import 'package:easycut_business/core/constant/routes.dart';
 import 'package:easycut_business/core/functions/handling_data_controller.dart';
 import 'package:easycut_business/core/services/services.dart';
 import 'package:easycut_business/data/data_source/remote/home/bookings_data.dart';
@@ -7,7 +8,7 @@ import 'package:get/get.dart';
 
 abstract class BookingController extends GetxController {
   getBookingsData();
-  // addAppointmentsData();
+  goToPendingBookingDetail(BookingModel bookingModel);
 }
 
 class BookingControllerImp extends BookingController {
@@ -54,7 +55,6 @@ class BookingControllerImp extends BookingController {
   }
 
   getBookingPending(List<BookingModel> allBookings) {
-    var dateTime = DateTime.now().toString().substring(0, 10);
     allBookings.forEach((element) {
       if (element.approve == "0") {
         bookingPending.add(element);
@@ -62,41 +62,17 @@ class BookingControllerImp extends BookingController {
     });
   }
 
-  // @override
-  // addAppointmentsData() async {
-  //   statusRequest = StatusRequest.loading;
-  //   update();
-  //   var response = await appointmentData.postData(
-  //     salonId,
-  //     "$startTimeSat - $endTimeSat",
-  //     "$startTimeSun - $endTimeSun",
-  //     "$startTimeMon - $endTimeMon",
-  //     "$startTimeTue - $endTimeThu",
-  //     "$startTimeWed - $endTimeWed",
-  //     "$startTimeThu - $endTimeThu",
-  //     "$startTimeFri - $endTimeFri",
-  //   );
-  //   statusRequest = handlingData(response);
-  //   if (statusRequest == StatusRequest.success) {
-  //     if (response['status'] == 'success') {
-  //       Get.snackbar(
-  //         'Success',
-  //         'Adding Appointments',
-  //         snackPosition: SnackPosition.TOP,
-  //         colorText: Colors.green,
-  //       );
-  //       Get.offNamed(AppRoute.appointment);
-  //     } else {
-  //       statusRequest = StatusRequest.none;
-  //     }
-  //   }
-  //   update();
-  // }
-
   @override
   void onInit() {
     salonId = myServices.sharedPreferences.getString('id')!;
     getBookingsData();
     super.onInit();
+  }
+
+  @override
+  goToPendingBookingDetail(BookingModel bookingModel) {
+    Get.offNamed(AppRoute.bookingDetail, arguments: {
+      "booking": bookingModel,
+    });
   }
 }
